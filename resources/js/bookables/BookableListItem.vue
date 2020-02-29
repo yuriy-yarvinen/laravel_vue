@@ -1,8 +1,10 @@
 <template>
-	<div>
-		<h1>{{ title }}</h1>
-		<p>{{ content }}</p>
-		<p>{{ price }}</p>
+	<div class="card w-100">
+		<div class="card-body">
+			<h5 class="card-title">{{ title }}</h5>
+			<div class="card-text">{{ description }}</div>
+			<div class="card-subtitle">{{ price }}</div>
+		</div>
 	</div>
 </template>
 
@@ -10,12 +12,8 @@
 export default {
 	props: {
 		'title' : String,
-		'content' : String,
+		'description' : String,
 		'price' : Number
-	},
-	mounted(){
-		// console.log(this.Title);
-		// this.Title = 'new Title';
 	}
 }
 </script>

@@ -1,7 +1,28 @@
 <template>
 	<div>
-		<BookableListItem v-if="bookable1" :title='bookable1.title' :content='bookable1.content' v-bind:price='100'></BookableListItem>
-		<BookableListItem v-if="bookable2"  :title='bookable2.title' :content='bookable2.content' v-bind:price='200'></BookableListItem>
+		<div v-if="loading">
+			Data is loading...
+		</div>		
+		<div v-else>
+			<div class="row mb-4" v-for="row in rows" :key="'row' + row">
+				<div class="col-12 col-sm-4 col-md-4 d-flex align-items-stretch"
+				v-for="(bookable, colum) in bookablesInRow(row)"
+				:key="'row' + row + colum"
+				>
+					<BookableListItem
+					:title='bookable.title' 
+					:description='bookable.description'
+					v-bind:price='100' 
+					></BookableListItem>
+				</div>
+
+				<div class="col-12 col-sm-4 col-md-4"
+				v-for="p in placeholderInRows(row)" :key="'placeholder' + row + p"
+				></div>
+			</div>
+		
+		</div>
+
 	</div>
 </template>
 
@@ -13,21 +34,40 @@ export default {
 	},
 	data(){
 		return {
-			bookable1: null,
-			bookable2: null,
+			bookables: null,
+			loading: false,
+			colums: 3
+		}
+	},
+	computed:{
+		rows(){
+			return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.colums);
+		}
+	},
+	methods: {
+		bookablesInRow(row) {
+			return this.bookables.slice((row - 1) * this.colums, row * this.colums);
+		},
+		placeholderInRows(row){
+			return this.colums - this.bookablesInRow(row).length;
 		}
 	},
 	created(){
-		setTimeout(()=>{
-			this.bookable1 = {
-				title: "Cheap Villa !!!",
-				content: "Cheap Villa",
-			};
-			this.bookable2 = {
-				title: "Cheap Villa2",
-				content: "Cheap Villa2",
-			};
-		}, 2000);
+		this.loading = true;
+
+		const p = new Promise((resolve, reject) => {
+			setTimeout(() => resolve("Hello"), 3000);
+			
+		})
+		.then(result => result)
+		.catch(result => result);
+
+		axios.get('/api/bookables').then(response => {
+			this.bookables = response.data;
+			this.bookables.push({title:'x', description: 'x'});
+			this.loading = false;
+		});
+	
 	},
 }
 </script>
