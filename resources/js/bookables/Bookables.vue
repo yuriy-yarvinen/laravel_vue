@@ -12,7 +12,7 @@
 					<BookableListItem
 					:title='bookable.title' 
 					:description='bookable.description'
-					v-bind:price='100' 
+					:id='bookable.id' 
 					></BookableListItem>
 				</div>
 
@@ -55,16 +55,8 @@ export default {
 	created(){
 		this.loading = true;
 
-		const p = new Promise((resolve, reject) => {
-			setTimeout(() => resolve("Hello"), 3000);
-			
-		})
-		.then(result => result)
-		.catch(result => result);
-
 		axios.get('/api/bookables').then(response => {
 			this.bookables = response.data;
-			this.bookables.push({title:'x', description: 'x'});
 			this.loading = false;
 		});
 	
