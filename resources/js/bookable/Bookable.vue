@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 pb-4">
 		<availability></availability>
 	</div>
   </div>

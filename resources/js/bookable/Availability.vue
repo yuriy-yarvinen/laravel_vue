@@ -6,22 +6,40 @@
       <div class="form-group col-md-6">
         <label for="from">From</label>
         <input
-          type="text"
-          name="from"
-          class="form-control form-control-sm"
-          placeholder="Start date"
+			v-model="from"
+          	type="text"
+          	name="from"
+          	class="form-control form-control-sm"
+          	placeholder="Start date"
         />
       </div>
 
       <div class="form-group col-md-6">
         <label for="to">To</label>
-        <input type="text" name="to" class="form-control form-control-sm" placeholder="End date" />
+        <input 
+			v-model="to" 
+			type="text" 
+			name="to" 
+			class="form-control form-control-sm" 
+			placeholder="End date" 
+		/>
       </div>
     </div>
 
     <button class="btn btn-secondary btn-block">Check!</button>
   </div>
 </template>
+
+<script>
+export default {
+	data(){
+		return{
+			from: "2019-11-08",
+			to: null,
+		}
+	}
+}
+</script>
 
 <style scoped>
 label {
