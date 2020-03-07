@@ -11,6 +11,7 @@
           	name="from"
           	class="form-control form-control-sm"
           	placeholder="Start date"
+			@keyup.enter="check"
         />
       </div>
 
@@ -22,20 +23,29 @@
 			name="to" 
 			class="form-control form-control-sm" 
 			placeholder="End date" 
+			@keyup.enter="check"
 		/>
       </div>
     </div>
 
-    <button class="btn btn-secondary btn-block">Check!</button>
+    <button class="btn btn-secondary btn-block" @click="check">Check!</button>
   </div>
 </template>
 
 <script>
 export default {
+	//v-on = @
 	data(){
 		return{
+			id: 1,
 			from: "2019-11-08",
 			to: null,
+		}
+	},
+	methods: {
+		check(){
+			console.log(this.id);
+			alert('I check somthing now');
 		}
 	}
 }
