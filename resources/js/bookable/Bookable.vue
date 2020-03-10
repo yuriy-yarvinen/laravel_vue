@@ -12,9 +12,12 @@
         </div>
       </div>
     </div>
-	<review-list></review-list>
+	
     <div class="col-md-4 pb-4">
 		<availability></availability>
+	</div>
+	<div class="col-md-8">
+		<review-list></review-list>
 	</div>
   </div>
 </template>
