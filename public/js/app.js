@@ -2255,13 +2255,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     halfStar: function halfStar() {
-      return true;
+      var fraction = Math.round((this.rating - Math.floor(this.rating)) * 100);
+      return fraction > 0 && fraction < 50;
     },
     fullStars: function fullStars() {
-      return 3;
+      return Math.round(this.rating);
     },
     emptyStars: function emptyStars() {
-      return 1;
+      return 5 - Math.ceil(this.rating);
     }
   }
 });
@@ -56165,7 +56166,12 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "col-md-6 d-flex justify-content-end" },
-                  [_c("star-rating", { attrs: { rating: review.rating } })],
+                  [
+                    _c("star-rating", {
+                      staticClass: "fa-lg",
+                      attrs: { rating: review.rating }
+                    })
+                  ],
                   1
                 )
               ]),
