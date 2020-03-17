@@ -2309,7 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     halfStar: function halfStar() {
-      var fraction = Math.round((this.rating - Math.floor(this.value)) * 100);
+      var fraction = Math.round((this.value - Math.floor(this.value)) * 100);
       return fraction > 0 && fraction < 50;
     },
     fullStars: function fullStars() {

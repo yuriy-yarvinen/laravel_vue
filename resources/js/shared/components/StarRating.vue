@@ -26,7 +26,7 @@
 		computed: {
 			halfStar() {
 				const fraction = Math.round(
-					(this.rating - Math.floor(this.value)) * 100
+					(this.value - Math.floor(this.value)) * 100
 				);
 				return fraction > 0 && fraction < 50;
 			},
