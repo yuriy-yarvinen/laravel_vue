@@ -2256,11 +2256,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       review: {
-        rating: 5,
+        rating: 0,
         content: null
       }
     };
@@ -2283,6 +2287,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -56383,7 +56389,7 @@ var render = function() {
         _vm._v(" "),
         _c("star-rating", {
           staticClass: "fa-3x",
-          attrs: { rating: 5 },
+          attrs: { rating: _vm.review.rating },
           on: {
             "rating:changed": function($event) {
               _vm.review.rating = $event
@@ -56450,6 +56456,9 @@ var render = function() {
           on: {
             click: function($event) {
               return _vm.$emit("rating:changed", star)
+            },
+            mouseenter: function($event) {
+              return _vm.$emit("rating:changed", star)
             }
           }
         })
@@ -56465,6 +56474,9 @@ var render = function() {
           staticClass: "far fa-star",
           on: {
             click: function($event) {
+              return _vm.$emit("rating:changed", _vm.fullStars + star)
+            },
+            mouseenter: function($event) {
               return _vm.$emit("rating:changed", _vm.fullStars + star)
             }
           }

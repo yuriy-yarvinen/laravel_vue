@@ -5,6 +5,7 @@
 			v-for="star in fullStars"
 			:key="'full' + star"
 			@click="$emit('rating:changed', star)"
+			@mouseenter="$emit('rating:changed', star)"
 		></i>
 		<i class="fas fa-star-half-alt" v-if="halfStar"></i>
 		<i
@@ -12,6 +13,7 @@
 			v-for="star in emptyStars"
 			:key="'empty' + star"
 			@click="$emit('rating:changed', fullStars + star)"
+			@mouseenter="$emit('rating:changed', fullStars + star)"
 		></i>
 	</div>
 </template>
