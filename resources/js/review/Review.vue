@@ -33,10 +33,10 @@ export default {
     return {
       review: {
         rating: 0,
-		content: null,
-		existingReview: null,
-      	loading: false
-      }
+		content: null
+	  },
+	  existingReview: null,
+      loading: false,
     };
   },
   created() {
@@ -56,10 +56,6 @@ export default {
     alreadyReviewed() {
       return this.existingReview !== null;
     }
-  // methods: {
-  //   onRatingChanged(rating) {
-  //     console.log(rating);
-  //   }
-  // }
+  }
 };
 </script> 
