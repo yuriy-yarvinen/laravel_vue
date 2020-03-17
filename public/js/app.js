@@ -2237,44 +2237,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/review/Review.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      review: {
-        rating: 0,
-        content: null
-      }
-    };
-  },
-  created: function created() {} // 1. If review already exists (in reviews table by id)
-  // 2. Fetch a booking by a review key
-  // 3. Store the review
-  // methods: {
-  //   onRatingChanged(rating) {
-  //     console.log(rating);
-  //   }
-  // }
-
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\yycode.ru\\resources\\js\\review\\Review.vue: Unexpected token, expected \",\" (64:1)\n\n  62 |   //   }\n  63 |   // }\n> 64 | };\n     |  ^\n  65 | \n    at Parser.raise (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:7017:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:8395:16)\n    at Parser.expect (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:8381:28)\n    at Parser.parseObj (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9982:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9616:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9259:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9239:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9109:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9082:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:9037:21)\n    at Parser.parseExportDefaultExpression (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:11866:24)\n    at Parser.parseExport (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:11768:31)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:10794:27)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:11264:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:11251:10)\n    at Parser.parseTopLevel (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:10621:10)\n    at Parser.parse (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:12222:10)\n    at parse (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\parser\\lib\\index.js:12273:38)\n    at parser (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\@babel\\core\\lib\\transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\gensync\\index.js:254:32)\n    at gen.next (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\gensync\\index.js:266:13)\n    at async.call.value (C:\\xampp\\htdocs\\yycode.ru\\node_modules\\gensync\\index.js:216:11)");
 
 /***/ }),
 
@@ -56379,59 +56344,75 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "form-group" },
-      [
-        _c("label", { staticClass: "text-muted" }, [
-          _vm._v("Select the star rating (1 is worst - 5 is best)")
-        ]),
-        _vm._v(" "),
-        _c("star-rating", {
-          staticClass: "fa-3x",
-          model: {
-            value: _vm.review.rating,
-            callback: function($$v) {
-              _vm.$set(_vm.review, "rating", $$v)
-            },
-            expression: "review.rating"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "text-muted", attrs: { for: "content" } }, [
-        _vm._v("Describe your expirience with")
-      ]),
-      _vm._v(" "),
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.review.content,
-            expression: "review.content"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { name: "content", cols: "30", rows: "10" },
-        domProps: { value: _vm.review.content },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.review, "content", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("button", { staticClass: "btn btn-lg btn-primary btn-block" }, [
-      _vm._v("Submit")
-    ])
+    _vm.loading
+      ? _c("div", [_vm._v("Loading...")])
+      : _c("div", [
+          _vm.alreadyReviewed
+            ? _c("div", [
+                _c("h3", [
+                  _vm._v("You've already left a review for this booking!")
+                ])
+              ])
+            : _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { staticClass: "text-muted" }, [
+                      _vm._v("Select the star rating (1 is worst - 5 is best)")
+                    ]),
+                    _vm._v(" "),
+                    _c("star-rating", {
+                      staticClass: "fa-3x",
+                      model: {
+                        value: _vm.review.rating,
+                        callback: function($$v) {
+                          _vm.$set(_vm.review, "rating", $$v)
+                        },
+                        expression: "review.rating"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "text-muted", attrs: { for: "content" } },
+                    [_vm._v("Describe your expirience with")]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.review.content,
+                        expression: "review.content"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "content", cols: "30", rows: "10" },
+                    domProps: { value: _vm.review.content },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.review, "content", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-lg btn-primary btn-block" },
+                  [_vm._v("Submit")]
+                )
+              ])
+        ])
   ])
 }
 var staticRenderFns = []
