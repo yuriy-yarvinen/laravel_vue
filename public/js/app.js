@@ -2358,7 +2358,6 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
-      // 3. Store the review
       this.errors = null;
       this.loading = true;
       axios.post("/api/reviews", this.review).then(function (response) {

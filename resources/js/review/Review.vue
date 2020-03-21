@@ -115,7 +115,6 @@ export default {
   },
   methods: {
     submit() {
-      // 3. Store the review
       this.errors = null;
       this.loading = true;
       axios
