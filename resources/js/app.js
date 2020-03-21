@@ -4,6 +4,7 @@ import router from "./routes";
 import VueRouter from "vue-router";
 import Index from "./Index";
 import StarRating from "./shared/components/StarRating";
+import FatalError from "./shared/components/FatalError";
 
 require('./bootstrap');
 
@@ -13,10 +14,8 @@ window.Vue = require('vue');
 // 	'example-component', 
 // 	require('./components/ExampleComponent.vue').default
 // );
-Vue.component(
-	'star-rating', 
-	StarRating
-);
+Vue.component('star-rating', StarRating);
+Vue.component("fatal-error", FatalError);
 
 Vue.use(VueRouter);
 Vue.filter("fromNow", value => moment(value).lang("ru").fromNow());
