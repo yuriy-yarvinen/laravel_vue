@@ -39,7 +39,7 @@
                 v-model="review.content"
                 :class="[{'is-invalid': errorFor('content')}]"
               ></textarea>
-              <v-errors :errors="errorFor('from')"></v-errors>
+              <v-errors :errors="errorFor('content')"></v-errors>
             </div>
 
             <button
@@ -57,7 +57,6 @@
 <script>
 import { is404, is422 } from "./../shared/utils/response";
 import validationErrors from "./../shared/mixins/validationErrors";
-
 export default {
   mixins: [validationErrors],
   data() {
@@ -74,32 +73,27 @@ export default {
       sending: false
     };
   },
-  created() {
+  async created() {
     this.review.id = this.$route.params.id;
     this.loading = true;
-    // 1. If review already exists (in reviews table by id)
-    axios
-      .get(`/api/reviews/${this.review.id}`)
-      .then(response => {
-        this.existingReview = response.data.data;
-      })
-      .catch(err => {
-        if (is404(err)) {
-          // 2. Fetch a booking by a review key
-          return axios
-            .get(`/api/booking-by-review/${this.review.id}`)
-            .then(response => {
-              this.booking = response.data.data;
-            })
-            .catch(err => {
-              this.error = !is404(err);
-            });
+    try {
+      this.existingReview = (await axios.get(
+        `/api/reviews/${this.review.id}`
+      )).data.data;
+    } catch (err) {
+      if (is404(err)) {
+        try {
+          this.booking = (await axios.get(
+            `/api/booking-by-review/${this.review.id}`
+          )).data.data;
+        } catch (err) {
+          this.error = !is404(err);
         }
+      } else {
         this.error = true;
-      })
-      .then(() => {
-        this.loading = false;
-      });
+      }
+    }
+    this.loading = false;
   },
   computed: {
     alreadyReviewed() {

@@ -60,7 +60,6 @@ export default {
 	},
 	methods: {
 		check(){
-			console.log(this.id);
 			this.loading = true;
 			this.errors = null;
 			axios.get(`/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`).then(response =>{
