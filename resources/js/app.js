@@ -25,6 +25,7 @@ Vue.component("v-errors", ValidationErrors);
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
+
 Vue.filter("fromNow", value => moment(value).locale("ru").fromNow());
 
 const store = new Vuex.Store(storeDefinition);
