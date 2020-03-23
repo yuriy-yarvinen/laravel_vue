@@ -2342,9 +2342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    return _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -74035,6 +74033,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_components_ValidationErrors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/components/ValidationErrors */ "./resources/js/shared/components/ValidationErrors.vue");
 /* harmony import */ var _shared_components_Success__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/components/Success */ "./resources/js/shared/components/Success.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+
 
 
 
@@ -74061,9 +74061,11 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_8__["default"]);
 Vue.filter("fromNow", function (value) {
   return moment__WEBPACK_IMPORTED_MODULE_0___default()(value).locale("ru").fromNow();
 });
+var store = new vuex__WEBPACK_IMPORTED_MODULE_8__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_9__["default"]);
 var app = new Vue({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_1__["default"],
+  store: store,
   components: {
     "Index": _Index__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
@@ -74930,6 +74932,31 @@ var is422 = function is422(err) {
 var isErrorWithResponseAndStatus = function isErrorWithResponseAndStatus(err) {
   return err.response && err.response.status;
 };
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: {
+    lastSearch: {
+      from: null,
+      to: null
+    }
+  },
+  mutations: {
+    setLastSearch: function setLastSearch(state, payload) {
+      state.lastSearch = payload;
+    }
+  }
+});
 
 /***/ }),
 
