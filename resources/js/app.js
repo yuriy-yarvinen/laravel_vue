@@ -6,6 +6,7 @@ import Index from "./Index";
 import StarRating from "./shared/components/StarRating";
 import FatalError from "./shared/components/FatalError";
 import ValidationErrors from "./shared/components/ValidationErrors";
+import Success from "./shared/components/Success";
 
 require('./bootstrap');
 
@@ -17,6 +18,7 @@ window.Vue = require('vue');
 // );
 Vue.component('star-rating', StarRating);
 Vue.component("fatal-error", FatalError);
+Vue.component("success", Success);
 Vue.component("v-errors", ValidationErrors);
 
 Vue.use(VueRouter);
