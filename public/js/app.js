@@ -2032,7 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       this.errors = null;
-      this.$store.commit("setLastSearch", {
+      this.$store.dispatch("setLastSearch", {
         from: this.from,
         to: this.to
       });
@@ -2392,7 +2392,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -75020,6 +75022,12 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {
     setLastSearch: function setLastSearch(state, payload) {
       state.lastSearch = payload;
+    }
+  },
+  actions: {
+    setLastSearch: function setLastSearch(context, payload) {
+      context.commit('setLastSearch', payload);
+      localStorage.setItem('lastSearch', JSON.stringify(payload));
     }
   }
 });
