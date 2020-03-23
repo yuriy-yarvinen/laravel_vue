@@ -1974,8 +1974,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      from: "2019-11-08",
-      to: null,
+      from: this.$store.state.lastSearch.from,
+      to: this.$store.state.lastSearch.to,
       loading: false,
       status: null
     };
@@ -1986,7 +1986,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       this.errors = null;
-      this.$store.commit('setLastSearch', {
+      this.$store.commit("setLastSearch", {
         from: this.from,
         to: this.to
       });
