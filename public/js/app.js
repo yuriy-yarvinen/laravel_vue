@@ -2392,9 +2392,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    return _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -74136,6 +74134,9 @@ var app = new Vue({
   store: store,
   components: {
     "Index": _Index__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  beforeCreate: function beforeCreate() {
+    this.$store.dispatch("loadStoredState");
   }
 });
 
@@ -75028,6 +75029,13 @@ __webpack_require__.r(__webpack_exports__);
     setLastSearch: function setLastSearch(context, payload) {
       context.commit('setLastSearch', payload);
       localStorage.setItem('lastSearch', JSON.stringify(payload));
+    },
+    loadStoredState: function loadStoredState(context) {
+      var lastSearch = localStorage.getItem('lastSearch');
+
+      if (lastSearch) {
+        context.commit('setLastSearch', JSON.parse(lastSearch));
+      }
     }
   }
 });
