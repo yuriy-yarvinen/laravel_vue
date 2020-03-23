@@ -7,6 +7,7 @@ import StarRating from "./shared/components/StarRating";
 import FatalError from "./shared/components/FatalError";
 import ValidationErrors from "./shared/components/ValidationErrors";
 import Success from "./shared/components/Success";
+import Vuex from 'vuex';
 
 require('./bootstrap');
 
@@ -22,6 +23,7 @@ Vue.component("success", Success);
 Vue.component("v-errors", ValidationErrors);
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 Vue.filter("fromNow", value => moment(value).locale("ru").fromNow());
 
 const app = new Vue({
