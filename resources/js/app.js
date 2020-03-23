@@ -22,7 +22,7 @@ Vue.component("success", Success);
 Vue.component("v-errors", ValidationErrors);
 
 Vue.use(VueRouter);
-Vue.filter("fromNow", value => moment(value).lang("ru").fromNow());
+Vue.filter("fromNow", value => moment(value).locale("ru").fromNow());
 
 const app = new Vue({
 	el: '#app',
