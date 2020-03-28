@@ -2012,6 +2012,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2394,7 +2399,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -57245,7 +57252,16 @@ var render = function() {
         attrs: { disabled: _vm.loading },
         on: { click: _vm.check }
       },
-      [_vm._v("Check!")]
+      [
+        !_vm.loading ? _c("span", [_vm._v("Check!")]) : _vm._e(),
+        _vm._v(" "),
+        _vm.loading
+          ? _c("span", [
+              _c("i", { staticClass: "fas fa-circle-notch fa-spin" }),
+              _vm._v(" Checking...\n      ")
+            ])
+          : _vm._e()
+      ]
     )
   ])
 }
