@@ -38,21 +38,23 @@
       </div>
     </div>
 
-    <button class="btn btn-secondary btn-block" @click="check" :disabled="loading">
-      <span v-if="!loading">Check!</span>
-      <span v-if="loading">
-        <i class="fas fa-circle-notch fa-spin"></i> Checking...
-      </span>
-    </button>
+	<button-with-loading :loading="loading" @click.native="check">
+		<span v-if="loading">Checking</span>
+		<span v-if="!loading">Check</span>
+	</button-with-loading>
   </div>
 </template>
 
 <script>
 import { is422 } from "./../shared/utils/response";
 import validationErrors from "./../shared/mixins/validationErrors";
+import ButtonWithLoading from "./../shared/components/ButtonWithLoading";
 
 export default {
-	//v-on = @
+	//v-on = @	
+	components:{
+		ButtonWithLoading
+	},
 	mixins: [validationErrors],
 	props: {
     	bookableId: [String, Number]
