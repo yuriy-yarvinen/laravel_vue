@@ -12,96 +12,92 @@
       <div class="form-group col-md-6">
         <label for="from">From</label>
         <input
-			v-model="from"
-          	type="text"
-          	name="from"
-          	class="form-control form-control-sm"
-          	placeholder="Start date"
-			@keyup.enter="check"
-			:class="[{'is-invalid' : errorFor('from')}]"
+          type="text"
+          name="from"
+          class="form-control form-control-sm"
+          placeholder="Start date"
+          v-model="from"
+          @keyup.enter="check"
+          :class="[{'is-invalid': errorFor('from')}]"
         />
-		<v-errors :errors="errorFor('from')"></v-errors>
+        <v-errors :errors="errorFor('from')"></v-errors>
       </div>
 
       <div class="form-group col-md-6">
         <label for="to">To</label>
-        <input 
-			v-model="to" 
-			type="text" 
-			name="to" 
-			class="form-control form-control-sm" 
-			placeholder="End date" 
-			@keyup.enter="check"
-			:class="[{'is-invalid' : errorFor('to')}]"
-		/>
-		<v-errors :errors="errorFor('from')"></v-errors>
+        <input
+          type="text"
+          name="to"
+          class="form-control form-control-sm"
+          placeholder="End date"
+          v-model="to"
+          @keyup.enter="check"
+          :class="[{'is-invalid': errorFor('to')}]"
+        />
+        <v-errors :errors="errorFor('to')"></v-errors>
       </div>
     </div>
 
-	<button-with-loading :loading="loading" @click.native="check">
-		<span v-if="loading">Checking</span>
-		<span v-if="!loading">Check</span>
-	</button-with-loading>
+    <button class="btn btn-secondary btn-block" @click="check" :disabled="loading">
+      <span v-if="!loading">Check!</span>
+      <span v-if="loading">
+        <i class="fas fa-circle-notch fa-spin"></i> Checking...
+      </span>
+    </button>
   </div>
 </template>
 
 <script>
 import { is422 } from "./../shared/utils/response";
 import validationErrors from "./../shared/mixins/validationErrors";
-import ButtonWithLoading from "./../shared/components/ButtonWithLoading";
-
 export default {
-	//v-on = @	
-	components:{
-		ButtonWithLoading
-	},
-	mixins: [validationErrors],
-	props: {
-    	bookableId: [String, Number]
-  	},
-	data(){
-		return{
-		  	from: this.$store.state.lastSearch.from,
-     		to: this.$store.state.lastSearch.to,
-			loading: false,
-			status: null,
-		}
-	},
-	methods: {
-		check(){
-			this.loading = true;
-			this.errors = null;
-
-			this.$store.dispatch("setLastSearch", {
-				from: this.from,
-				to: this.to
-			});
-
-			axios.get(`/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`).then(response =>{
-				this.status = response.status;
-			}).catch(error => {
-				if(is422(error)){
-					this.errors = error.response.data.errors;
-				}
-
-				this.status = error.response.status;
-			}).then(() => {
-				this.loading = false;
-			});
-		}
-	},
-	computed: {
-		hasErrors(){
-			return 422 === this.status && this.errors !== null;
-		},
-		hasAvailability(){
-			return 200 === this.status;
-		},
-		noAvailability(){
-			return 404 === this.status;
-		}
-	}
-}
+  mixins: [validationErrors],
+  props: {
+    bookableId: [String, Number]
+  },
+  data() {
+    return {
+      from: this.$store.state.lastSearch.from,
+      to: this.$store.state.lastSearch.to,
+      loading: false,
+      status: null
+    };
+  },
+  methods: {
+    async check() {
+      this.loading = true;
+      this.errors = null;
+      this.$store.dispatch("setLastSearch", {
+        from: this.from,
+        to: this.to
+      });
+      try {
+        this.status = (await axios.get(
+          `/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`
+        )).status;
+        this.$emit("availability", this.hasAvailability);
+      } catch (err) {
+        if (is422(err)) {
+          this.errors = err.response.data.errors;
+        }
+        this.status = err.response.status;
+        this.$emit("availability", this.hasAvailability);
+      }
+      this.loading = false;
+    }
+  },
+  computed: {
+    hasErrors() {
+      return 422 === this.status && this.errors !== null;
+    },
+    hasAvailability() {
+      return 200 === this.status;
+    },
+    noAvailability() {
+      return 404 === this.status;
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -111,9 +107,11 @@ label {
   color: gray;
   font-weight: bolder;
 }
-
-.is-invalid{
-	border-color: #b22222;
-	/* background-image: none; */
+.is-invalid {
+  border-color: #b22222;
+  background-image: none;
 }
-</style> 
+.invalid-feedback {
+  color: #b22222;
+}
+</style>

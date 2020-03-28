@@ -21,7 +21,7 @@ class BookablePriceController extends Controller
 
         $data = $request->validate([
             'from' => 'required|date_format:Y-m-d',
-            'to' => 'required|date_format:Y-m-d|after_or_equal:fro'
+            'to' => 'required|date_format:Y-m-d|after_or_equal:from'
         ]);
 
         $days = (new Carbon($data['from']))->diffInDays(new Carbon($data['to'])) + 1;
