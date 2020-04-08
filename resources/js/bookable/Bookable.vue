@@ -30,8 +30,21 @@
 				class="btn btn-outline-secondary btn-block"
 				v-if="price"
 				@click="addToBasket"
+				:disabled="inBasketAlready"
 			>Book now</button>
 		</transition>
+
+		<button
+			class="btn btn-outline-secondary btn-block"
+			v-if="inBasketAlready"
+			@click="removeFromBasket"			
+		>Remove from basket</button>
+
+		<div
+			v-if="inBasketAlready"
+			class="mt-4 text-muted warning"
+		>Seems like you've added this object to basket already. If you want to change dates, remove from the basket first.</div>
+
     </div>
   </div>
 </template>
@@ -40,7 +53,7 @@
 import Availability from "./Availability";
 import ReviewList from "./ReviewList";
 import PriceBreakdown from "./PriceBreakdown";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   components: {
     Availability,
@@ -62,7 +75,16 @@ export default {
     });
   },
   computed: mapState({
-    lastSearch: "lastSearch"
+	lastSearch: "lastSearch",
+	inBasketAlready(state) {
+      if (null === this.bookable) {
+        return false;
+      }
+      return state.basket.items.reduce(
+        (result, item) => result || item.bookable.id === this.bookable.id,
+        false
+      );
+    }
   }),
   methods: {
     async checkPrice(hasAvailability) {
@@ -78,6 +100,9 @@ export default {
         this.price = null;
       }
 	},
+	removeFromBasket() {
+      this.$store.commit("removeFromBasket", this.bookable.id);
+    },
     addToBasket() {
       this.$store.commit("addToBasket", {
         bookable: this.bookable,
@@ -88,3 +113,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.warning {
+  font-size: 0.7rem;
+}
+</style> 
