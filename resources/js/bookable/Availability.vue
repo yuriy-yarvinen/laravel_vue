@@ -38,11 +38,10 @@
       </div>
     </div>
 
- 	<button-with-loading :loading="loading" @click.native="check">
-		<span v-if="loading">Checking</span>
-		<span v-if="!loading">Check</span>
-	</button-with-loading>
-	
+    <button-with-loading :loading="loading" @click.native="check">
+      <span v-if="loading">Checking</span>
+      <span v-if="!loading">Check</span>
+    </button-with-loading>
   </div>
 </template>
 
@@ -51,9 +50,9 @@ import { is422 } from "./../shared/utils/response";
 import validationErrors from "./../shared/mixins/validationErrors";
 import ButtonWithLoading from "./../shared/components/ButtonWithLoading";
 export default {
-	components:{
-		ButtonWithLoading
-	},
+  components: {
+    ButtonWithLoading
+  },
   mixins: [validationErrors],
   props: {
     bookableId: [String, Number]
@@ -75,9 +74,11 @@ export default {
         to: this.to
       });
       try {
-        this.status = (await axios.get(
-          `/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`
-        )).status;
+        this.status = (
+          await axios.get(
+            `/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`
+          )
+        ).status;
         this.$emit("availability", this.hasAvailability);
       } catch (err) {
         if (is422(err)) {

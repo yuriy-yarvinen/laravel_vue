@@ -2030,7 +2030,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -2145,7 +2144,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -2411,9 +2409,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    'title': String,
-    'description': String,
-    'id': Number
+    title: String,
+    description: String,
+    id: Number
   }
 });
 
@@ -2429,9 +2427,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
-//
-//
-//
 //
 //
 //
@@ -2484,7 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading = true;
-    axios.get('/api/bookables').then(function (response) {
+    axios.get("/api/bookables").then(function (response) {
       _this.bookables = response.data.data;
       _this.loading = false;
     });
@@ -57371,7 +57366,7 @@ var render = function() {
           "router-link",
           { staticClass: "btn nav-button", attrs: { to: { name: "home" } } },
           [
-            _vm._v("\n\t\t\tBasket\n\t\t\t"),
+            _vm._v("\n      Basket\n      "),
             _vm.itemsInBasket
               ? _c("span", { staticClass: "badge badge-secondary" }, [
                   _vm._v(_vm._s(_vm.itemsInBasket))
@@ -57420,7 +57415,7 @@ var render = function() {
         "h6",
         { staticClass: "text-uppercase text-secondary font-weight-bolder" },
         [
-          _vm._v("\n      Check Availability\n      "),
+          _vm._v("\n    Check Availability\n    "),
           _c("transition", { attrs: { name: "fade" } }, [
             _vm.noAvailability
               ? _c("span", { staticClass: "text-danger" }, [
@@ -57753,7 +57748,7 @@ var render = function() {
       : _c(
           "div",
           _vm._l(_vm.reviews, function(review, index) {
-            return _c("div", { key: index, staticClass: "border-bottom " }, [
+            return _c("div", { key: index, staticClass: "border-bottom" }, [
               _c("div", { staticClass: "row pt-4" }, [
                 _c("div", { staticClass: "col-md-6" }, [_vm._v("Piotr Jura")]),
                 _vm._v(" "),
@@ -57852,7 +57847,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.loading
-      ? _c("div", [_vm._v("\n\t\tData is loading...\n\t")])
+      ? _c("div", [_vm._v("Data is loading...")])
       : _c(
           "div",
           _vm._l(_vm.rows, function(row) {
