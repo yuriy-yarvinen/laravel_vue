@@ -102,6 +102,7 @@
 import { mapGetters, mapState } from "vuex";
 import validationErrors from "./../shared/mixins/validationErrors";
 export default {
+  mixins: [validationErrors],
   data() {
     return {
       loading: false,
