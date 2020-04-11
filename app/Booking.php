@@ -25,6 +25,10 @@ class Booking extends Model
         return $this->hasOne(Review::class);
 	}
 	
+	public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
 	// Booking or null
 
 	public static function findByReviewKey(string $reviewKey): ?Booking
