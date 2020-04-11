@@ -75921,9 +75921,9 @@ __webpack_require__.r(__webpack_exports__);
       commit('addToBasket', payload);
       localStorage.setItem('basket', JSON.stringify(state.basket));
     },
-    removeFromBasket: function removeFromBasket() {
-      commit('removeFromBasket', payload);
-      localStorage.setItem('basket', JSON.stringify(state.basket));
+    removeFromBasket: function removeFromBasket(context, payload) {
+      context.commit('removeFromBasket', payload);
+      localStorage.setItem('basket', JSON.stringify(context.state.basket));
     }
   },
   getters: {
