@@ -75999,6 +75999,15 @@ Vue.filter("fromNow", function (value) {
   return moment__WEBPACK_IMPORTED_MODULE_1___default()(value).locale("ru").fromNow();
 });
 var store = new vuex__WEBPACK_IMPORTED_MODULE_9__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_10__["default"]);
+window.axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (401 === error.response.status) {
+    store.dispatch("logout");
+  }
+
+  return Promise.reject(error);
+});
 var app = new Vue({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_2__["default"],
