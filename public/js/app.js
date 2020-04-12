@@ -75725,21 +75725,7 @@ var app = new Vue({
             case 0:
               _this.$store.dispatch("loadStoredState");
 
-              _context.next = 3;
-              return axios.get('/sanctum/csrf-cookie');
-
-            case 3:
-              _context.next = 5;
-              return axios.post("/login", {
-                email: 'iswaniawski@example.org',
-                password: 'password'
-              });
-
-            case 5:
-              _context.next = 7;
-              return axios.get('/user');
-
-            case 7:
+            case 1:
             case "end":
               return _context.stop();
           }
@@ -76438,6 +76424,10 @@ var routes = [{
   path: "/basket",
   component: _basket_Basket__WEBPACK_IMPORTED_MODULE_3__["default"],
   name: "basket"
+}, {
+  path: "/auth/login",
+  component: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './auth/Login'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))["default"],
+  name: "login"
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes,
