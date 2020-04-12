@@ -62,7 +62,7 @@ export default {
       password: null,
       loading: false
     };
-  },
+	},
   methods: {
     async login() {
       this.loading = true;
@@ -74,7 +74,7 @@ export default {
           password: this.password
 				});
 				logIn();
-        this.$store.dispatch("loadUser");
+				this.$store.dispatch("loadUser");
         this.$router.push({ name: "home" });
       } catch (error) {
         this.errors = error.response && error.response.data.errors;
