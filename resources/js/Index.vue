@@ -12,7 +12,7 @@
         </li>
 
         <li class="nav-item" v-if="!isLoggedIn">
-          <router-link :to="{name: 'register'}" class="nav-link">Register</router-link>
+          <router-link :to="{name: 'register'}" class="font-weight-bold">Register</router-link>
         </li>
 
         <li class="nav-item" v-if="!isLoggedIn">
