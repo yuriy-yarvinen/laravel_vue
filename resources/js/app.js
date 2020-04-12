@@ -39,5 +39,6 @@ const app = new Vue({
 	},
 	async beforeCreate() {
 		this.$store.dispatch("loadStoredState");
+		this.$store.dispatch("loadUser");
 	},
 });
