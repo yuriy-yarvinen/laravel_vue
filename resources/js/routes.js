@@ -3,6 +3,7 @@ import Bookables from "./bookables/Bookables.vue";
 import Bookable from "./bookable/Bookable.vue";
 import Basket from "./basket/Basket";
 import Review from "./review/Review.vue";
+import Login from "./auth/Login.vue";
 
 const routes = [
 	{
@@ -27,7 +28,7 @@ const routes = [
 	},
 	{
 		path: "/auth/login",
-		component: require("./auth/Login").default,
+		component: Login,
 		name: "login"
 	},
 ];
